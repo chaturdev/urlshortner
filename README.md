@@ -2,7 +2,7 @@
 A complete demo of url shortening 
 
 This repo has two part 
-A:- Server
+A:- Server /n
 1:- server:- which will run on 3000 port by default (you can pass any port by setting **PORT** env variable.
 for connection string you have to pass **MONGODB_URI_LOCAL** for local and **MONGODB_URI** for prod.
 2:- npm start will start the server.
