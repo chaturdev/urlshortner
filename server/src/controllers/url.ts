@@ -4,6 +4,9 @@ import { check, sanitize, validationResult, body } from "express-validator";
 import logger from "../utils/logger"
 const router = express.Router()
 
+/**
+ * this url is for converting a url into short url
+ */
 router.post('/urls/short', async (req: Request, res: Response) => {
     await body("url", "Password cannot be blank").isLength({ min: 1 }).run(req);
     const errors = validationResult(req)
@@ -26,11 +29,17 @@ router.post('/urls/short', async (req: Request, res: Response) => {
     });
 })
 
+/**
+ * this api is for listing all urls
+ */
 router.get('/urls/list', async (req: Request, res: Response) => {
     logger.info(`list of all shorted url fetched`);
     const instance =  await Url.find();
     res.send(instance);
 })
+/**
+ * this is api is for routing from short url to actual url
+ */
 router.get('/urls/:route', async (req, res) => {
     const route = req.params.route;
     const instance = await Url.findOne({id: route});
